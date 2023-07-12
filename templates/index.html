@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Video</title>
+    <style>
+        .face-frame {
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="{{url_for('video_feed')}}" width="640" height="480">
+    </div>
+    {% for face_id, face in faces.items() %}
+    <div class="face-frame">
+        <h2>Face {{ face_id }}</h2>
+        <img src="{{ url_for('face_video', face_id=face_id, x=face['x'], y=face['y'], width=face['width'], height=face['height']) }}">
+    </div>
+    {% endfor %}
+</body>
+</html>
